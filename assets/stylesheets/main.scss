@@ -1,0 +1,251 @@
+$govuk-font-family: "Helvetica";
+$govuk-images-path:"/assets/images/";
+
+@import "../../node_modules/govuk-frontend/govuk/all";
+
+/*! Copyright (c) 2011 by Margaret Calvert & Henrik Kubel. All rights reserved. The font has been customised for exclusive use on gov.uk. This cut is not commercially available. */
+/* stylelint-disable-line scss/comment-no-loud  */
+
+@media print {
+  .govuk-link {
+    font-family: Helvetica, arial, sans-serif;
+  }
+}
+
+.govuk-footer__copyright-logo {
+  display: inline-block;
+  min-width: 125px;
+  padding-top: 112px;
+  background-image: url("/awacs/task/assets/images/govuk-crest.png");
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: 125px 102px;
+  text-align: center;
+  white-space: nowrap;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .govuk-footer__copyright-logo {
+    background-image: url("/awacs/task/assets/images/govuk-crest-2x.png");
+  }
+}
+
+.psrf-header {
+  background-color: #0b0c0c;
+  padding-top: 10px;
+  border-bottom: 10px solid #1d70b8;
+}
+
+.psrf-header__container {
+  max-width: 960px;
+  margin: 0 15px;
+  position: relative;
+}
+
+@media (min-width: 40.0625em) {
+  .psrf-header__container {
+    margin: 0 30px;
+  }
+}
+
+@media (min-width: 1020px) {
+  .psrf-header__container {
+    margin: 0 auto;
+  }
+}
+
+.psrf-header__container:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.psrf-header__logo {
+  padding-bottom: 10px;
+}
+
+@media (min-width: 40.0625em) {
+  .psrf-header__logo {
+    float: left;
+  }
+}
+
+.psrf-header__area {
+  padding-bottom: 10px;
+}
+
+@media (min-width: 40.0625em) {
+  .psrf-header__area {
+    float: right;
+  }
+}
+
+
+.psrf-header__content {
+  padding-bottom: 10px;
+}
+
+@media (min-width: 40.0625em) {
+  .psrf-header__content {
+    float: right;
+  }
+}
+
+.psrf-header__link {
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  font-size: 1.125rem;
+  line-height: 1.11111;
+  border-bottom: 1px solid transparent;
+  color: #ffffff;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 25px;
+  margin-bottom: -1px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+@media print {
+  .psrf-header__link {
+    font-family: sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .psrf-header__link {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+}
+
+@media print {
+  .psrf-header__link {
+    font-size: 18pt;
+    line-height: 1.15;
+  }
+}
+
+.psrf-header__link:link, .psrf-header__link:visited, .psrf-header__link:hover, .psrf-header__link:active {
+  color: #ffffff;
+}
+
+.psrf-header__link:hover {
+  border-color: #ffffff;
+}
+
+.psrf-header__link:focus {
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.psrf-header__navigation {
+  color: #ffffff;
+  margin-top: 3px;
+}
+
+.psrf-header__navigation-list {
+  font-size: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.psrf-header__navigation-item {
+  font-family: Helvetica, arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  display: inline-block;
+  float: right;
+}
+
+@media print {
+  .psrf-header__navigation-item {
+    font-family: Helvetica, arial, sans-serif;
+  }
+}
+
+@media (min-width: 40.0625em) {
+  .psrf-header__navigation-item {
+    font-size: 19px;
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .psrf-header__navigation-item {
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+.psrf-header__navigation-item:last-child {
+  margin-right: 0;
+  alignment: right;
+}
+
+.psrf-header__navigation-link:link, .psrf-header__navigation-link:visited, .psrf-header__navigation-link:active {
+  color: #ffffff;
+}
+
+.psrf-header__navigation-link:hover {
+  text-decoration: underline;
+}
+
+.psrf-header__navigation-link:focus {
+  color: #ffffff;
+}
+
+.psrf-header__navigation-link[aria-current=page] {
+  text-decoration: none;
+}
+
+.psrf-search-input {
+  padding-bottom: 7px !important;
+  padding-top: 8px !important;
+}
+
+.moj-search__hint {
+  text-align: left;
+  color: #0b0c0c !important;
+}
+
+.moj-primary-navigation {
+  background-color: white !important;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.psrf-grid-column-one-third-from-desktop {
+  box-sizing: border-box;
+  padding: 0 0 10px 0 ;
+}
+@media (min-width: 48.0625em) {
+  .psrf-grid-column-one-third-from-desktop {
+    width: 33.3333%;
+    float: right;
+  }
+}
+
+.psrf-grid-column-two-thirds-from-desktop {
+  box-sizing: border-box;
+  padding: 0 0 10px 0 ;
+}
+@media (min-width: 48.0625em) {
+  .psrf-grid-column-two-thirds-from-desktop {
+    width: 66.6667%;
+    float: left;
+  }
+}
