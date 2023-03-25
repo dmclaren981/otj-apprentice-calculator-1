@@ -1,16 +1,12 @@
-// const config = require('../config');
-const path = require('path');
-// const appConfig = config.returnConfig(process.env);
-
-const getHome = async (req, res) => {
+const getDashboard = async (req, res) => {
   try {
-    res.sendFile( path.resolve('src', 'views', 'dashboard.html') );
+    res.render('dashboard', { error: req.flash('error') });
   } catch (err) {
     console.log(err);
-    console.log('its broken')
+    console.log('its broken');
   }
 };
 
 module.exports = {
-  getHome,
+  getDashboard,
 };
