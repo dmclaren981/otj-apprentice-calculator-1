@@ -51,67 +51,67 @@
   </header>
   <div class="govuk-width-container ">
     <main class="govuk-main-wrapper " id="main-content" role="main">
-      <h1 class="govuk-heading-xl">Register</h1>
 
-      <!-- ERROR DISPLAY-->
-      {% if error and error.length %}
-      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1"
-        data-module="govuk-error-summary">
-        <h2 class="govuk-error-summary__title" id="error-summary-title">
-          There was a problem
-        </h2>
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-            {% for message in error %}
-            <li><a href="#">{{ message }}</a></li>
-            {% endfor %}
-          </ul>
+ {% if error and error.length %}
+  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+      There was a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+        {% for message in error %}
+          <li><a href="#">{{ message }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}
+
+
+{% if success and success.length %}
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
+  aria-labelledby="govuk-notification-banner-title"
+  data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+     {% for message in success %}
+        {{ message }}
+      {% endfor %}
+    </h3>
+  </div>
+</div>
+{% endif %}
+      <h1 class="govuk-heading-xl">Welcome {{ user.username }}</h1>
+
+{% block content %}
+  <h1>Admin Panel</h1>
+  
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <h2>Generate Admin Codes</h2>
+      <p>Use this option to generate unique admin codes that can be assigned to new administrators.</p>
+      <form method="POST" action="/admin/generate-codes">
+        <button type="submit" class="govuk-button">Generate Codes</button>
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <h2>Edit Users (Apprentices)</h2>
+      <p>Use this option to edit the details of existing apprentices.</p>
+      <form method="POST" action="/admin/edit-users">
+        <button type="submit" class="govuk-button">Edit Users</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
         </div>
       </div>
-      {% endif %}
-
-      <!-- SUCCESS DISPLAY-->
-        {% if success %}
-        <div class="govuk-panel govuk-panel--confirmation">
-          <h1 class="govuk-panel__title">
-            {{ success }}
-          </h1>
-        </div>
-        {% endif %}
-
-      <div class="govuk-grid-row">
-        <!-- REGISTER FORM -->
-       <div class="govuk-grid-column-one-half">
-            <form method="post" action="/register">
-                <div class="govuk-form-group">
-                <label class="govuk-label" for="username">Username</label>
-                <input class="govuk-input" id="username" name="username" type="text" required>
-                </div>
-                <div class="govuk-form-group">
-                <label class="govuk-label" for="password">Password</label>
-                <input class="govuk-input" id="password" name="password" type="password" required>
-                </div>
-                <div class="govuk-form-group">
-                <label class="govuk-label" for="name">Name</label>
-                <input class="govuk-input" id="name" name="name" type="text" required>
-                </div>
-                <div class="govuk-form-group">
-                <label class="govuk-label" for="email">Email</label>
-                <input class="govuk-input" id="email" name="email" type="email" required>
-                </div>
-               <div class="govuk-form-group">
-                <label class="govuk-label" for="admin-code">Admin code (optional)</label>
-                <input class="govuk-input" id="admin-code" name="adminCode" type="text">
-              </div>
-
-                <button class="govuk-button" type="submit">Register</button>
-                <p class="govuk-body">Already have an account? <a href="/dashboard">Sign in</a></p>
-            </form>
-            </div>
-      </div>
   </div>
-  </div>
-
 <footer class="govuk-footer " role="contentinfo">
   <div class="govuk-width-container ">
     <div class="govuk-footer__meta">

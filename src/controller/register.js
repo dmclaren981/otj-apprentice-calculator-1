@@ -40,10 +40,14 @@ const registerUser = async (req, res) => {
   let role = 'apprentice';
   if (adminCode) {
     // Check if the provided admin code matches the code stored in the database
-    const { rows: [admin] } = await db.query('SELECT * FROM admin_codes WHERE code = $1', [adminCode]);
+    const { rows: [admin] } = await db.query('SELECT * FROM admin_codes WHERE code = $1 AND valid = $2', [adminCode, true]);
     if (admin) {
       role = 'admin';
+      req.flash('success', 'Admin code accepted');
+      return res.redirect('/admin/dashboard');
     }
+    req.flash('error', 'Invalid admin code');
+    return res.redirect('/register');
   }
 
   // Hash password
@@ -57,7 +61,9 @@ const registerUser = async (req, res) => {
       [username, hashedPassword, email, role],
     );
     const userId = result.rows[0].id;
-    await db.query('INSERT INTO otj_records (user_id, total_hours) VALUES ($1, $2)', [userId, 0]);
+    if (role === 'apprentice') {
+      await db.query('INSERT INTO otj_records (apprentice_id, total_hours, date) VALUES ($1, $2, $3)', [userId, 0, new Date()]);
+    }
     await db.query('COMMIT');
     req.session.userId = userId; // set session for the user
     req.flash('success', 'Registration successful');

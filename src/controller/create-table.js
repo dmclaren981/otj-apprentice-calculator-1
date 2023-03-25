@@ -35,14 +35,15 @@ const createTables = async () => {
       CREATE TABLE admin_codes (
         id SERIAL PRIMARY KEY,
         code VARCHAR(255) NOT NULL,
-        description VARCHAR(255)
+        description VARCHAR(255),
+        valid BOOLEAN DEFAULT true
       );
     `;
 
   const createOtjRecordsTable = `
       CREATE TABLE otj_records (
         id SERIAL PRIMARY KEY,
-        apprentice_id INTEGER NOT NULL REFERENCES users(id),
+        apprentice_id INTEGER REFERENCES users(id),
         date DATE NOT NULL,
         hours NUMERIC NOT NULL,
         total_hours NUMERIC NOT NULL DEFAULT 0

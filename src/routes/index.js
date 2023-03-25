@@ -4,6 +4,7 @@ const { getAllUsers, getUserById, addUser } = require('../controller/users');
 const { authLogin } = require('../controller/login');
 const { getRegister, registerUser } = require('../controller/register');
 const { getUserDashboard } = require('../controller/user-dashboard');
+const { getAdminDashboard } = require('../controller/admin-dashboard');
 const { addHours } = require('../controller/hours/add-hours');
 const { viewEditHoursHistory, getEditHoursForm, updateHours } = require('../controller/hours/otj-hours');
 const { deleteHours } = require('../controller/hours/delete-hours');
@@ -13,6 +14,9 @@ const getRoutes = () => {
   app.get('/', (req, res) => {
     res.redirect('/dashboard');
   });
+  app.get('/login', (req, res) => {
+    res.redirect('/dashboard');
+  });
   app.get('/dashboard', getDashboard);
   app.get('/users', getAllUsers); // we shouldn't expose our users route for security purposes
   app.get('/users/:id', getUserById); // amend to be get user by name?
@@ -20,6 +24,7 @@ const getRoutes = () => {
   app.get('/user/dashboard', getUserDashboard);
   app.get('/hours-history', viewEditHoursHistory);
   app.get('/edit-hours-form/:id', getEditHoursForm);
+  app.get('/admin/dashboard', getAdminDashboard);
   app.post('/register', registerUser);
   app.post('/users/', addUser);
   app.post('/login', authLogin);

@@ -29,14 +29,24 @@ const authLogin = (req, res) => {
         return res.redirect('/dashboard');
       }
 
+      if (user.role === 'admin') {
+        req.session.user = {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          role: user.role,
+        };
+        req.flash('success', 'Logged in as admin!');
+        return res.redirect('/admin/dashboard');
+      }
       req.session.user = {
         id: user.id,
         username: user.username,
         email: user.email,
+        role: user.role,
       };
-
       req.flash('success', 'Logged in!');
-      res.redirect('/user/dashboard');
+      return res.redirect('/user/dashboard');
     });
   });
 };
