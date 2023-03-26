@@ -45,7 +45,7 @@ const createTables = async () => {
         id SERIAL PRIMARY KEY,
         apprentice_id INTEGER REFERENCES users(id),
         date DATE NOT NULL,
-        hours NUMERIC NOT NULL,
+        hours NUMERIC,
         total_hours NUMERIC NOT NULL DEFAULT 0
       );
     `;

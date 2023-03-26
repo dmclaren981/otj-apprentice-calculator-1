@@ -8,6 +8,8 @@ const { getAdminDashboard } = require('../controller/admin-dashboard');
 const { addHours } = require('../controller/hours/add-hours');
 const { viewEditHoursHistory, getEditHoursForm, updateHours } = require('../controller/hours/otj-hours');
 const { deleteHours } = require('../controller/hours/delete-hours');
+const { getAdminApprenticesPage } = require('../controller/admin-apprentices');
+const { generateAdminCodes } = require('../controller/admin-dashboard');
 
 const getRoutes = () => {
   const app = express.Router();
@@ -25,6 +27,8 @@ const getRoutes = () => {
   app.get('/hours-history', viewEditHoursHistory);
   app.get('/edit-hours-form/:id', getEditHoursForm);
   app.get('/admin/dashboard', getAdminDashboard);
+  app.get('/admin/apprentice/info', getAdminApprenticesPage);
+  app.post('/admin/generate-codes', generateAdminCodes);
   app.post('/register', registerUser);
   app.post('/users/', addUser);
   app.post('/login', authLogin);

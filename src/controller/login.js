@@ -29,6 +29,8 @@ const authLogin = (req, res) => {
         return res.redirect('/dashboard');
       }
 
+      console.log('User authenticated:', user);
+
       if (user.role === 'admin') {
         req.session.user = {
           id: user.id,

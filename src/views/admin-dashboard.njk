@@ -68,7 +68,7 @@
 {% endif %}
 
 
-{% if success and success.length %}
+{% if adminCodes and adminCodes.length %}
 <div class="govuk-notification-banner govuk-notification-banner--success" role="alert"
   aria-labelledby="govuk-notification-banner-title"
   data-module="govuk-notification-banner">
@@ -79,32 +79,35 @@
   </div>
   <div class="govuk-notification-banner__content">
     <h3 class="govuk-notification-banner__heading">
-     {% for message in success %}
-        {{ message }}
-      {% endfor %}
+      Generated admin codes:
     </h3>
+    <ul class="govuk-list govuk-list--bullet">
+      {% for code in adminCodes %}
+        <li>{{ code }}</li>
+      {% endfor %}
+    </ul>
   </div>
 </div>
 {% endif %}
-      <h1 class="govuk-heading-xl">Welcome {{ user.username }}</h1>
+
+
 
 {% block content %}
-  <h1>Admin Panel</h1>
-  
+  <h1 class="govuk-heading-xl">Admin Panel</h1>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
-      <h2>Generate Admin Codes</h2>
-      <p>Use this option to generate unique admin codes that can be assigned to new administrators.</p>
+      <h2 class="govuk-heading-m">Generate Admin Codes</h2>
+      <p class="govuk-body">Use this option to generate unique admin codes that can be assigned to new administrators.</p>
       <form method="POST" action="/admin/generate-codes">
-        <button type="submit" class="govuk-button">Generate Codes</button>
+        <button type="submit" class="govuk-button">Create codes</button>
       </form>
     </div>
     <div class="govuk-grid-column-one-half">
-      <h2>Edit Users (Apprentices)</h2>
-      <p>Use this option to edit the details of existing apprentices.</p>
-      <form method="POST" action="/admin/edit-users">
-        <button type="submit" class="govuk-button">Edit Users</button>
-      </form>
+      <h2 class="govuk-heading-m">Edit Users (Apprentices)</h2>
+      <p class="govuk-body">Use this option to edit the details of existing apprentices.</p>
+     <form method="GET" action="/admin/apprentice/info">
+    <button type="submit" class="govuk-button">View apprentices</button>
+</form>
     </div>
   </div>
 {% endblock %}
